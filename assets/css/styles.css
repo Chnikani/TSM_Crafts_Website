@@ -1,0 +1,266 @@
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=PT+Sans:wght@700&display=swap');
+
+/* --- CSS Variables (Enhanced Palette) --- */
+:root {
+    --primary-green: #006A4E; /* A deeper, richer green */
+    --accent-pink: #E84393;   /* A vibrant, modern pink */
+    --accent-peach: #FDCB6E; /* A warmer, sunnier peach */
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --background-light: #FEFDFB;
+    --white: #FFFFFF;
+    --border-color: #dfe6e9;
+    --font-heading: 'PT Sans', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* --- General Reset & Body Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.8;
+    color: var(--text-dark);
+    background: linear-gradient(175deg, #FFF, #FFF9F5 70%);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* --- Header & Glassmorphism Navigation --- */
+.main-header {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-pink);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-button {
+    display: none;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    text-align: center;
+    padding: 100px 20px 120px 20px;
+}
+
+.hero-section h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.hero-section .slogan {
+    font-size: 1.6rem;
+    color: var(--accent-pink);
+    margin-bottom: 40px;
+}
+
+/* --- Buttons with Gradients --- */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 50px; /* Pill shape */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--accent-pink), var(--accent-peach));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-green);
+    margin-left: 20px;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+/* --- Page Sections --- */
+.page-section {
+    padding: 100px 0;
+}
+
+.page-section h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.page-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-pink);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* --- Product Grid & Cards --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-card-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.product-card-content {
+    padding: 30px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.product-card-content p {
+    color: var(--text-light);
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background: #2d3436;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 80px;
+}
+
+/* --- Responsive Mobile Menu --- */
+@media (max-width: 850px) {
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 91px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .main-nav.is-open {
+        display: flex;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .mobile-menu-button {
+        display: block;
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+    }
+}
