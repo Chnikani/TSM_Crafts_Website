@@ -8,7 +8,10 @@
     --accent-peach: #FDCB6E; /* A warmer, sunnier peach */
     --text-dark: #2d3436;
     --text-light: #636e72;
-    --background-light: #FEFDFB;
+    /* NEW Background: A subtle, multi-tone gradient for a more premium feel */
+    --background-light: #FDFCFB;
+    --background-gradient-start: #F5F7FA;
+    --background-gradient-end: #E6E9ED;
     --white: #FFFFFF;
     --border-color: #dfe6e9;
     --font-heading: 'PT Sans', sans-serif;
@@ -25,11 +28,17 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-body);
     line-height: 1.8;
     color: var(--text-dark);
-    background: linear-gradient(175deg, #FFF, #FFF9F5 70%);
+    /* NEW Background Style */
+    background-color: var(--background-light);
+    background-image: linear-gradient(180deg, var(--background-gradient-start) 0%, var(--background-light) 100%);
 }
 
 .container {
@@ -101,9 +110,29 @@ body {
 
 /* --- Hero Section --- */
 .hero-section {
+    position: relative;
     text-align: center;
     padding: 100px 20px 120px 20px;
+    background-image: url('../images/hero-bg.jpg'); /* Your background image */
+    background-size: cover;
+    background-position: center;
 }
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
 
 .hero-section h1 {
     font-family: var(--font-heading);
@@ -196,7 +225,7 @@ body {
 
 .product-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 30px rgba(232, 67, 147, 0.15); /* New pink glow */
 }
 
 .product-card-img {
@@ -224,6 +253,46 @@ body {
     margin-bottom: 25px;
     flex-grow: 1;
 }
+
+/* --- Vision & Mission Section --- */
+.vision-section {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
+
+.vision-section h2 {
+    color: var(--white);
+}
+.vision-section h2::after {
+    background-color: var(--accent-peach);
+}
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.vision-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vision-card h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent-peach);
+    margin-bottom: 20px;
+}
+
+.vision-card p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
 
 /* --- Footer --- */
 .main-footer {
@@ -262,5 +331,8 @@ body {
         border: none;
         cursor: pointer;
         z-index: 1001;
+    }
+    .vision-grid { /* Stack vision cards on mobile */
+        grid-template-columns: 1fr;
     }
 }
